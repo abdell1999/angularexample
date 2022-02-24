@@ -12,13 +12,18 @@ import { Employee } from '../employee';
 export class IndexComponent implements OnInit {
   employees: Employee[] = [];
   page: number = 1;
+  loading: boolean;
+
 
   // constructor() { }
-  constructor(public employeeService: EmployeeService) { }
+  constructor(public employeeService: EmployeeService) {
+    this.loading = true;
+  }
 
   ngOnInit(): void {
     this.employeeService.getAll().subscribe((data: Employee[])=>{
       this.employees = data;
+      this.loading = false;
       console.log(this.employees);
     })
   }
@@ -26,7 +31,7 @@ export class IndexComponent implements OnInit {
   deleteEmployee(id:number){
     this.employeeService.delete(id).subscribe(res => {
          this.employees = this.employees.filter(item => item.id !== id);
-         console.log('Person deleted successfully!');
+         console.log(`El empleado con id ${id} ha sido eliminado correctamente`);
     })
   }
 

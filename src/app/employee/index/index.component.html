@@ -7,7 +7,15 @@
 
   <br>
 
-  <table class="table ">
+
+
+
+  <div class="container text-center mb-5" *ngIf="loading">
+
+    <i class="fas fa-spinner fa-spin fa-5x"></i>
+  </div>
+
+  <table class="table" *ngIf="loading == false">
     <thead class="table-dark">
     <tr>
       <th>ID</th>
@@ -35,10 +43,13 @@
 </section>
 
 
-<div class="pagination">
+<div class="pagination" *ngIf="loading == false">
   <pagination-controls
                       (pageChange)="page = $event"
                       previousLabel="Anterior"
                       nextLabel="Siguiente"></pagination-controls>
 
                     </div>
+
+
+

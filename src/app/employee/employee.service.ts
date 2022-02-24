@@ -55,7 +55,7 @@ update(id:number, employee:any): Observable<Employee> {
 }
 
 delete(id:number){
-  return this.httpClient.delete<Employee>(this.url + id, this.httpOptions)
+  return this.httpClient.delete<Employee>(this.url +"/"+ id, this.httpOptions)
   .pipe(
     catchError(this.errorHandler)
   )
