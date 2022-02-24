@@ -15,7 +15,7 @@ const routes: Routes = [
       { path: 'create', component: CreateComponent },
       { path: 'edit/:id', component: EditComponent },
       { path: 'index', component: IndexComponent },
-      { path: '', redirectTo: 'employees/index', pathMatch: 'full'},
+      { path: '', redirectTo: 'index', pathMatch: 'full'},
     ]
   }
 

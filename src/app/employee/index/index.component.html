@@ -1,8 +1,8 @@
 <section>
 
   <div class="d-flex justify-content-between">
-    <h4>List employees</h4>
-    <a routerLink="/employees/create" class="btn btn-success">Create New employee</a>
+    <h4>Lista de empleados</h4>
+    <a routerLink="/employees/create" class="btn btn-success">Agregar empleado</a>
   </div>
 
   <br>
@@ -10,10 +10,10 @@
   <table class="table ">
     <tr>
       <th>ID</th>
-      <th>Name</th>
-      <th>Email</th>
-      <th>Phone</th>
-      <th width="220px">Action</th>
+      <th>Nombre</th>
+      <th>Correo</th>
+      <th>Teléfono</th>
+      <th>Acciones</th>
     </tr>
 
     <tr *ngFor="let employee of employees">
