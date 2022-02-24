@@ -1,0 +1,7 @@
+.pagination{
+  display: flex;
+  margin-top: 33px;
+  display: flex;
+  justify-content: center;
+  font-size: 1.5em;
+}

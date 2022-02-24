@@ -11,6 +11,7 @@ import { Employee } from '../employee';
 })
 export class IndexComponent implements OnInit {
   employees: Employee[] = [];
+  page: number = 1;
 
   // constructor() { }
   constructor(public employeeService: EmployeeService) { }

@@ -16,15 +16,24 @@
       <th>Acciones</th>
     </tr>
 
-    <tr *ngFor="let employee of employees">
+    <tr *ngFor="let employee of employees | paginate: { itemsPerPage: 15, currentPage: page }">
       <td>{{ employee.id }}</td>
       <td>{{ employee.name }}</td>
       <td>{{ employee.email }}</td>
       <td>{{ employee.phone }}</td>
       <td>
-        <a href="#" [routerLink]="['/employees/', 'edit', employee.id  ]" class="btn btn-primary">Edit</a>
-        <button type="button" (click)="deleteEmployee(employee.id)" class="btn btn-danger">Delete</button>
+        <a href="#" [routerLink]="['/employees/', 'edit', employee.id  ]" class="btn btn-primary">EDITAR</a>
+  <button type="button" (click)="deleteEmployee(employee.id)" class="btn btn-danger">Delete</button>
       </td>
     </tr>
   </table>
 </section>
+
+
+<div class="pagination">
+  <pagination-controls
+                      (pageChange)="page = $event"
+                      previousLabel="Anterior"
+                      nextLabel="Siguiente"></pagination-controls>
+
+                    </div>
