@@ -10,14 +10,12 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 })
 export class CreateComponent implements OnInit {
 
-  form: FormGroup = new FormGroup({});
+  form: FormGroup;
 
   constructor(
     public employeeService: EmployeeService,
     private router: Router
-  ) { }
-
-  ngOnInit(): void {
+  ) {
 
     this.form = new FormGroup({
       name:  new FormControl('', [ Validators.required, Validators.pattern('^[a-zA-ZÁáÀàÉéÈèÍíÌìÓóÒòÚúÙùÑñüÜ \-\']+') ]),
@@ -27,15 +25,16 @@ export class CreateComponent implements OnInit {
 
   }
 
-  get f(){
-    return this.form.controls;
-  }
+  ngOnInit(): void { }
+
+
+
 
   submit(){
     console.log(this.form.value);
     this.employeeService.create(this.form.value).subscribe(res => {
-         console.log('Employee created successfully!');
-         this.router.navigateByUrl('employee/index');
+         console.log('¡Empleado creado correctamente!');
+         this.router.navigateByUrl('employees/index');
     })
   }
 
