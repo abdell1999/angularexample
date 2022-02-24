@@ -41,14 +41,14 @@ create(employee:any): Observable<Employee> {
 }
 
 find(id:number): Observable<Employee> {
-  return this.httpClient.get<Employee>(this.url + id)
+  return this.httpClient.get<Employee>(this.url +"/"+ id)
   .pipe(
     catchError(this.errorHandler)
   )
 }
 
 update(id:number, employee:any): Observable<Employee> {
-  return this.httpClient.put<Employee>(this.url + id, JSON.stringify(employee), this.httpOptions)
+  return this.httpClient.put<Employee>(this.url +"/"+ id, JSON.stringify(employee), this.httpOptions)
   .pipe(
     catchError(this.errorHandler)
   )
