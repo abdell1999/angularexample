@@ -8,6 +8,7 @@
   <br>
 
   <table class="table ">
+    <thead class="table-dark">
     <tr>
       <th>ID</th>
       <th>Nombre</th>
@@ -15,17 +16,21 @@
       <th>Teléfono</th>
       <th>Acciones</th>
     </tr>
+  </thead>
 
+    <tbody>
     <tr *ngFor="let employee of employees | paginate: { itemsPerPage: 15, currentPage: page }">
       <td>{{ employee.id }}</td>
       <td>{{ employee.name }}</td>
       <td>{{ employee.email }}</td>
       <td>{{ employee.phone }}</td>
-      <td>
-        <a href="#" [routerLink]="['/employees/', 'edit', employee.id  ]" class="btn btn-primary">EDITAR</a>
-  <button type="button" (click)="deleteEmployee(employee.id)" class="btn btn-danger">Delete</button>
-      </td>
+      <td class="d-grid gap-2 d-md-flex justify-content-md-start">
+        <a href="#" [routerLink]="['/employees/', 'edit', employee.id  ]" class="btn btn-primary"><i class="fa-solid fa-user-pen"></i> Editar</a>
+  <button type="button" (click)="deleteEmployee(employee.id)" class="btn btn-danger"><i class="fa-solid fa-trash-can"></i> Eliminar</button>
+
+</td>
     </tr>
+  </tbody>
   </table>
 </section>
 
