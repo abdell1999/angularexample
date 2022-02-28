@@ -11,13 +11,15 @@ import { EditComponent } from './edit/edit.component';
 
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormComponent } from './form/form.component';
 
 
 @NgModule({
   declarations: [
     IndexComponent,
     CreateComponent,
-    EditComponent
+    EditComponent,
+    FormComponent
   ],
   imports: [
     CommonModule,
