@@ -32,6 +32,9 @@ export class EmployeeService {
     catchError(this.errorHandler)
   )
 }
+pagination(numberElements:number, page:number): Observable<Object> {
+  return this.httpClient.get(this.url+"/paginate/"+numberElements+"?page="+page)
+}
 
 
 search(search:string): Observable<Employee[]> {

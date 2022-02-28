@@ -12,6 +12,7 @@ import { EditComponent } from './edit/edit.component';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FormComponent } from './form/form.component';
+import { PaginacionComponent } from './paginacion/paginacion.component';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { FormComponent } from './form/form.component';
     IndexComponent,
     CreateComponent,
     EditComponent,
-    FormComponent
+    FormComponent,
+    PaginacionComponent
   ],
   imports: [
     CommonModule,

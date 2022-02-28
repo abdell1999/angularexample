@@ -1,0 +1,104 @@
+<section>
+  <div class="d-flex justify-content-between">
+    <h4>Lista de empleados</h4>
+    <a routerLink="/employees/create" class="btn btn-success"
+      ><i class="fa-solid fa-plus"></i> Agregar empleado</a
+    >
+  </div>
+
+  <br />
+  <div class="mb-3 row justify-content-between">
+    <div class="col-4">
+      Mostrar:
+      <select [(ngModel)]="newValue" (change)="changeNumberElements()">
+        <option value="10">10</option>
+        <option value="20">20</option>
+        <option value="30">30</option>
+        <option value="40">40</option>
+        <option value="50">50</option>
+        <option value="100">100</option>
+      </select>
+      resgistros.
+    </div>
+
+    <div class="col-3">
+      <form class="d-flex">
+        <input
+          class="form-control me-2"
+          type="search"
+          name="buscador"
+          [(ngModel)]="search"
+          (change)="searchItems()"
+          placeholder="Buscar empleado"
+          aria-label="Search"
+        />
+        <button class="btn btn-outline-success" type="submit">Buscar</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="container text-center mb-5" *ngIf="loading">
+    <i class="fas fa-spinner fa-spin fa-5x"></i>
+  </div>
+
+  <table class="table" *ngIf="loading == false">
+    <thead class="table-dark">
+      <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Correo</th>
+        <th>Teléfono</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr
+        *ngFor="
+          let employee of employees
+            | paginate: { itemsPerPage: numberElements, currentPage: page }
+        "
+      >
+        <td>{{ employee.id }}</td>
+        <td>{{ employee.name }}</td>
+        <td>{{ employee.email }}</td>
+        <td>{{ employee.phone }}</td>
+        <td class="d-grid gap-2 d-md-flex justify-content-md-start">
+          <a
+            href="#"
+            [routerLink]="['/employees/', 'edit', employee.id]"
+            class="btn btn-primary"
+            ><i class="fa-solid fa-user-pen"></i> Editar</a
+          >
+          <button
+            type="button"
+            (click)="deleteEmployee(employee.id)"
+            class="btn btn-danger"
+          >
+            <i class="fa-solid fa-trash-can"></i> Eliminar
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<div
+  class="alert alert-warning"
+  role="alert"
+  *ngIf="empty == true && loading == false"
+>
+  No se han encontrado registros
+</div>
+
+<nav aria-label="pagination" *ngIf="loading == false && empty == false">
+  <ul class="pagination justify-content-center">
+    <li class="page-item disabled">
+      <a class="page-link" href="#">Anterior</a>
+    </li>
+    <li class="page-item active"><a class="page-link" >1</a></li>
+    <li class="page-item"><a class="page-link" (click)="changePage()">2</a></li>
+    <li class="page-item"><a class="page-link" (click)="changePage()">3</a></li>
+    <li class="page-item"><a class="page-link" (click)="changePage()">Siguiente</a></li>
+  </ul>
+</nav>
