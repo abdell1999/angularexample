@@ -33,6 +33,14 @@ export class EmployeeService {
   )
 }
 
+
+search(search:string): Observable<Employee[]> {
+  return this.httpClient.get<Employee[]>(this.url+"/search/"+ search)
+  .pipe(
+    catchError(this.errorHandler)
+  )
+}
+
 create(employee:any): Observable<Employee> {
   return this.httpClient.post<Employee>(this.url, JSON.stringify(employee), this.httpOptions)
   .pipe(

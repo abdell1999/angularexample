@@ -15,6 +15,20 @@ export class IndexComponent implements OnInit {
   loading: boolean; //Esta variable indica si se están cargando datos, mientras no termine la carga permanecerá en verdadero
   numberElements:number = 10;
   newValue:number = 10;
+  search:any = "";
+
+  searchItems(){
+    console.log(this.search)
+    this.loading = true;
+    this.employeeService.search(this.search).subscribe((data: Employee[])=>{
+      this.employees = data;
+      this.loading = false;
+      console.log(this.employees);
+    })
+  }
+
+
+
 
 
   changeNumberElements(){
