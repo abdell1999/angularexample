@@ -25,9 +25,7 @@ export class IndexComponent implements OnInit {
       this.employees = data;
       this.loading = false;
       console.log(this.employees);
-      if(this.employees.length == 0){
-        this.empty = true;
-      }
+      this.checkEmpty(this.employees.length);
     })
   }
 
@@ -47,14 +45,21 @@ export class IndexComponent implements OnInit {
     this.loading = true;
   }
 
+  checkEmpty(length:number){
+    if(length>0){
+      this.empty = false;
+    }else{
+      this.empty = true
+    }
+  }
+
+
   ngOnInit(): void {
     this.employeeService.getAll().subscribe((data: Employee[])=>{
       this.employees = data;
       this.loading = false; //Una vez que tengo los datos cambio este valor para dejar de mostrar la animación de carga
       console.log(this.employees);
-      if(this.employees.length == 0){
-        this.empty = true;
-      }
+      this.checkEmpty(this.employees.length);
     })
   }
 
