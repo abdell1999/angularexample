@@ -66,8 +66,11 @@
   </table>
 </section>
 
+<div class="alert alert-warning" role="alert" *ngIf="empty">
+  No se han encontrado registros
+</div>
 
-<div class="pagination" *ngIf="loading == false">
+<div class="pagination" *ngIf="loading == false && empty == false">
   <pagination-controls
                       (pageChange)="page = $event"
                       previousLabel="Anterior"

@@ -16,6 +16,7 @@ export class IndexComponent implements OnInit {
   numberElements:number = 10;
   newValue:number = 10;
   search:any = "";
+  empty:boolean = false;
 
   searchItems(){
     console.log(this.search)
@@ -24,6 +25,9 @@ export class IndexComponent implements OnInit {
       this.employees = data;
       this.loading = false;
       console.log(this.employees);
+      if(this.employees.length == 0){
+        this.empty = true;
+      }
     })
   }
 
@@ -48,6 +52,9 @@ export class IndexComponent implements OnInit {
       this.employees = data;
       this.loading = false; //Una vez que tengo los datos cambio este valor para dejar de mostrar la animación de carga
       console.log(this.employees);
+      if(this.employees.length == 0){
+        this.empty = true;
+      }
     })
   }
 
