@@ -13,7 +13,16 @@ export class IndexComponent implements OnInit {
   employees: Employee[] = []; //Array de tipo Employee, que contendrá los registros traidos de la api
   page: number = 1; //Página inicial de la paginación, lo normal es que sea "1"
   loading: boolean; //Esta variable indica si se están cargando datos, mientras no termine la carga permanecerá en verdadero
+  numberElements:number = 10;
+  newValue:number = 10;
 
+
+  changeNumberElements(){
+
+    this.numberElements = this.newValue;
+    //console.log(this.newValue);
+
+  }
 
   // constructor() { }
   constructor(public employeeService: EmployeeService) {

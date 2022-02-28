@@ -15,17 +15,17 @@
     <i class="fas fa-spinner fa-spin fa-5x"></i>
   </div>
 
-    <div class="mb-3 row">
+    <div class="mb-3 row justify-content-between">
 
-      <div class="col">Mostrar:
-        <select>
-          <option value="prueba">10</option>
-          <option value="prueba">25</option>
-          <option value="prueba">50</option>
-          <option value="prueba">100</option>
+      <div class="col-4">Mostrar:
+        <select [(ngModel)]="newValue" (change)="changeNumberElements()">
+          <option value="10">10</option>
+          <option value="25">25</option>
+          <option value="50">50</option>
+          <option value="100">100</option>
         </select> resgistros.
       </div>
-      <div class="col"></div>
+
       <div class="col-3"><form class="d-flex">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-success" type="submit">Search</button>
@@ -48,7 +48,7 @@
   </thead>
 
     <tbody>
-    <tr *ngFor="let employee of employees | paginate: { itemsPerPage: 15, currentPage: page }">
+    <tr *ngFor="let employee of employees | paginate: { itemsPerPage: numberElements, currentPage: page }">
       <td>{{ employee.id }}</td>
       <td>{{ employee.name }}</td>
       <td>{{ employee.email }}</td>
