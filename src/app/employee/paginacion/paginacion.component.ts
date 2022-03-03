@@ -19,7 +19,8 @@ export class PaginacionComponent implements OnInit {
 
 
   changePage(){
-    this.page = 3;
+    this.page = 2;
+    //console.log(this.employees);
     this.paginacion();
 
   }
@@ -81,12 +82,14 @@ export class PaginacionComponent implements OnInit {
 
 
   paginacion(){
-    console.log("ANTES DE LLAMAR A LA PAGINACION");
+    console.log("Trayendo datos...");
     this.employeeService.pagination(this.numberElements, this.page).subscribe((data: any)=>{
       console.log(data);
       this.employees = data.data;
       this.loading = false;
+
       console.log(this.employees);
+      console.log("Traidos con exito: "+this.employees.length+" registros!!!");
       this.checkEmpty(this.employees.length);
     })
   }
