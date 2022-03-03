@@ -91,12 +91,14 @@
 
 <nav aria-label="pagination" *ngIf="loading == false && empty == false">
   <ul class="pagination justify-content-center">
-    <li class="page-item disabled">
-      <a class="page-link" href="#">Anterior</a>
+    <li class="page-item">
+      <a class="page-link" (click)="prevPage()">Anterior</a>
     </li>
-    <li class="page-item active"><a class="page-link" >1</a></li>
-    <li class="page-item"><a class="page-link" (click)="changePage()">2</a></li>
-    <li class="page-item"><a class="page-link" (click)="changePage()">3</a></li>
-    <li class="page-item"><a class="page-link" (click)="changePage()">Siguiente</a></li>
+
+<!--
+  <li class="page-item active"><a class="page-link" >1</a></li>
+  <li class="page-item"><a class="page-link" (click)="changePage()">2</a></li>
+    <li class="page-item"><a class="page-link" (click)="changePage()">3</a></li>-->
+    <li class="page-item"><a class="page-link" (click)="nextPage()">Siguiente</a></li>
   </ul>
 </nav>

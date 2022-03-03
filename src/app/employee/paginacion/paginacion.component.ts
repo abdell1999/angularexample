@@ -19,7 +19,21 @@ export class PaginacionComponent implements OnInit {
 
 
   changePage(){
-    this.page = 2;
+    this.page++;;
+    //console.log(this.employees);
+    this.paginacion();
+
+  }
+
+  nextPage(){
+    this.page++;
+    //console.log(this.employees);
+    this.paginacion();
+
+  }
+
+  prevPage(){
+    this.page--;
     //console.log(this.employees);
     this.paginacion();
 
