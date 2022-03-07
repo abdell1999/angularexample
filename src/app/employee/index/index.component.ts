@@ -55,11 +55,19 @@ export class IndexComponent implements OnInit {
 
 
   ngOnInit(): void {
+
+    var start = Date.now();
+
     this.employeeService.getAll().subscribe((data: Employee[])=>{
       this.employees = data;
       this.loading = false; //Una vez que tengo los datos cambio este valor para dejar de mostrar la animación de carga
       console.log(this.employees);
       this.checkEmpty(this.employees.length);
+
+      var end = Date.now();
+
+      console.log("RENDIMIENTO");
+      console.log(end - start);
     })
   }
 

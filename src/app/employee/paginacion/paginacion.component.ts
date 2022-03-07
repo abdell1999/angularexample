@@ -40,20 +40,6 @@ export class PaginacionComponent implements OnInit {
   }
 
 
-  searchItems(){
-    console.log(this.search)
-    this.loading = true;
-    this.employeeService.search(this.search).subscribe((data: Employee[])=>{
-      this.employees = data;
-      this.loading = false;
-      console.log(this.employees);
-      this.checkEmpty(this.employees.length);
-    })
-  }
-
-
-
-
 
   changeNumberElements(){
 
@@ -107,6 +93,21 @@ export class PaginacionComponent implements OnInit {
       this.checkEmpty(this.employees.length);
     })
   }
+
+  searchItems(){
+    console.log(this.search)
+    this.loading = true;
+    this.page = 1;
+    this.employeeService.searchPaginate(this.search, this.numberElements, this.page).subscribe((data: any)=>{
+      this.employees = data.data;
+      this.loading = false;
+      console.log(this.employees);
+      this.checkEmpty(this.employees.length);
+    })
+  }
+
+
+
 
 
 //Elimino el registro con el id que se pasa como parámetro

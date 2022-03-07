@@ -44,6 +44,13 @@ search(search:string): Observable<Employee[]> {
   )
 }
 
+searchPaginate(search:string, numberElements:number, page:number): Observable<Object> {
+  return this.httpClient.get(this.url+"/search/"+ search +"/"+numberElements+"?page="+page)
+  .pipe(
+    catchError(this.errorHandler)
+  )
+}
+
 create(employee:any): Observable<Employee> {
   return this.httpClient.post<Employee>(this.url, JSON.stringify(employee), this.httpOptions)
   .pipe(
