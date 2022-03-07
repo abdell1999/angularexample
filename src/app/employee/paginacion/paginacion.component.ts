@@ -15,37 +15,46 @@ export class PaginacionComponent implements OnInit {
   newValue:number = 10;
   search:any = "";
   empty:boolean = false;
+  searching:boolean = false;
 
 
 
   changePage(){
     this.page++;;
     //console.log(this.employees);
-    this.paginacion();
+    this.isSearching();
 
   }
 
   nextPage(){
     this.page++;
     //console.log(this.employees);
-    this.paginacion();
+    this.isSearching();
 
   }
 
   prevPage(){
     this.page--;
     //console.log(this.employees);
-    this.paginacion();
+    this.isSearching();
 
   }
 
 
+  isSearching(){
+    if(this.searching){
+      this.searchItems();
+    }else{
+      this.paginacion();
+    }
+  }
 
   changeNumberElements(){
 
     this.numberElements = this.newValue;
     //console.log(this.numberElements);
-    this.paginacion();
+    this.isSearching();
+
 
   }
 
@@ -91,18 +100,23 @@ export class PaginacionComponent implements OnInit {
       console.log(this.employees);
       console.log("Traidos con exito: "+this.employees.length+" registros!!!");
       this.checkEmpty(this.employees.length);
+      this.searching = false;
     })
   }
 
   searchItems(){
     console.log(this.search)
     this.loading = true;
-    this.page = 1;
+    if(this.searching == false){
+      this.page = 1;
+    }
+
     this.employeeService.searchPaginate(this.search, this.numberElements, this.page).subscribe((data: any)=>{
       this.employees = data.data;
       this.loading = false;
       console.log(this.employees);
       this.checkEmpty(this.employees.length);
+      this.searching = true;
     })
   }
 
